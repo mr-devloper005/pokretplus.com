@@ -8,7 +8,7 @@ export const globalContent = {
     baseUrl: slot4BrandConfig.baseUrl,
   },
   nav: {
-    tagline: 'Independent reading platform',
+    tagline: 'Business insight network',
     primaryLinks: [
       { label: 'Articles', href: '/articles' },
       { label: 'Visuals', href: '/image-sharing' },
@@ -21,8 +21,8 @@ export const globalContent = {
     },
   },
   footer: {
-    tagline: 'Stories, resources, and discoverable posts',
-    description: 'A connected publishing surface for articles, visuals, listings, profiles, bookmarks, and downloadable resources.',
+    tagline: 'Business articles, listings, and discovery',
+    description: 'Pokretplus brings practical articles and business listings into one clean place for readers, professionals, founders, and customers.',
     columns: [
       {
         title: 'Explore',

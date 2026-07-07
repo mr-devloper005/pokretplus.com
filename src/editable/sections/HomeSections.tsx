@@ -135,59 +135,35 @@ export function EditableHomeHero({ primaryTask, primaryRoute, posts, timeSection
   const categories = SITE_CONFIG.tasks.filter((task) => task.enabled).slice(0, 6)
 
   return (
-    <section className="relative">
-      <div className="relative h-[440px] w-full overflow-hidden sm:h-[520px] lg:h-[560px]">
+    <section className="relative bg-[#eef3fb]">
+      <div className="relative h-[500px] w-full overflow-hidden sm:h-[580px] lg:h-[640px]">
         <EditableHeroCollage images={heroImages} />
-        <div className="absolute inset-0 bg-black/25" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.82)_0%,rgba(0,0,0,0.5)_45%,rgba(0,0,0,0.2)_100%)]" />
-        <div className={`relative flex h-full flex-col justify-center ${container}`}>
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/80">{pagesContent.home.hero.badge || 'Welcome'}</p>
-            <h1 className="mt-3 text-balance text-4xl font-extrabold leading-[1.05] tracking-[-0.02em] text-white sm:text-5xl lg:text-6xl">
+        <div className="absolute inset-0 bg-[#eef3fb]/96" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.98),rgba(238,243,251,0.96)_50%,rgba(238,243,251,0.98))]" />
+        <div className={`relative flex h-full flex-col items-center justify-center text-center ${container}`}>
+          <div className="mx-auto max-w-3xl">
+            <div className="pokret-dot-row justify-center"><span /><span /><span /><span /></div>
+            <p className="mt-8 text-sm font-extrabold uppercase tracking-[0.18em] text-[#15184c]">{pagesContent.home.hero.badge || 'Welcome'}</p>
+            <h1 className="mt-4 text-balance text-4xl font-extrabold leading-[1.08] tracking-[-0.02em] text-[#172033] sm:text-5xl lg:text-6xl">
               {heroTitle}
             </h1>
-            <p className="mt-4 max-w-xl text-base text-white/90 sm:text-lg">{pagesContent.home.hero.description}</p>
+            <p className="mx-auto mt-5 max-w-2xl text-base font-bold leading-8 text-[#4f5f78] sm:text-lg">{pagesContent.home.hero.description}</p>
 
-            <form action="/search" className="mt-7 flex w-full max-w-xl overflow-hidden rounded-full bg-white shadow-[0_10px_40px_rgba(0,0,0,0.35)]">
+            <form action="/search" className="mx-auto mt-8 flex w-full max-w-2xl overflow-hidden rounded-full bg-white p-1.5 shadow-[0_18px_50px_rgba(23,32,51,0.12)]">
               <div className="flex flex-1 items-center gap-2.5 px-5">
                 <Search className="h-5 w-5 shrink-0 text-[var(--slot4-muted-text)]" />
                 <input
                   name="q"
                   placeholder="Search posts, places, topics…"
-                  className="w-full bg-transparent py-4 text-sm text-[var(--slot4-page-text)] outline-none placeholder:text-[var(--slot4-muted-text)]"
+                  className="w-full bg-transparent py-4 text-sm font-semibold text-[var(--slot4-page-text)] outline-none placeholder:text-[var(--slot4-muted-text)]"
                 />
               </div>
-              <button className="shrink-0 bg-[var(--slot4-accent)] px-6 text-sm font-bold text-white transition hover:brightness-95 sm:px-8">
+              <button className="shrink-0 rounded-full bg-[linear-gradient(90deg,#ef3f8d,#ff6842)] px-6 text-sm font-bold text-white transition hover:-translate-y-0.5 sm:px-8">
                 Search
               </button>
             </form>
 
-            <div className="mt-6 flex flex-wrap gap-2.5">
-              {categories.map((task) => (
-                <Link
-                  key={task.key}
-                  href={task.route}
-                  className="rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
-                >
-                  {task.label}
-                </Link>
-              ))}
-            </div>
           </div>
-        </div>
-        {heroImages.length ? (
-          <p className="absolute bottom-4 left-4 text-xs font-medium text-white/70 sm:left-8">Latest on {SITE_CONFIG.name}</p>
-        ) : null}
-      </div>
-      {/* Quick stat strip under hero (Yelp-like trust band) */}
-      <div className="border-b border-[var(--editable-border)] bg-[var(--slot4-surface-bg)]">
-        <div className={`flex flex-wrap items-center justify-center gap-x-10 gap-y-2 py-4 text-sm text-[var(--slot4-muted-text)] ${container}`}>
-          <span className="inline-flex items-center gap-2"><Star className="h-4 w-4 fill-[var(--slot4-accent)] text-[var(--slot4-accent)]" /> Trusted reviews</span>
-          <span className="inline-flex items-center gap-2"><MapPin className="h-4 w-4 text-[var(--slot4-accent)]" /> Local discovery</span>
-          <span className="hidden items-center gap-2 sm:inline-flex"><ThumbsUp className="h-4 w-4 text-[var(--slot4-accent)]" /> Updated daily</span>
-          <Link href={primaryRoute} className="inline-flex items-center gap-1 font-semibold text-[var(--slot4-accent)] hover:underline">
-            Browse {taskLabel(primaryTask).toLowerCase()} <ChevronRight className="h-4 w-4" />
-          </Link>
         </div>
       </div>
     </section>
@@ -199,7 +175,7 @@ export function EditableStoryRail({ primaryRoute }: HomeSectionProps) {
   const categories = SITE_CONFIG.tasks.filter((task) => task.enabled)
   if (!categories.length) return null
   return (
-    <section className="bg-[var(--slot4-surface-bg)]">
+    <section className="overflow-hidden bg-white">
       <div className={`py-12 sm:py-14 ${container}`}>
         <div className="flex items-end justify-between gap-4">
           <div>
@@ -210,14 +186,15 @@ export function EditableStoryRail({ primaryRoute }: HomeSectionProps) {
             See all <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {categories.map((task) => {
+        <div className="relative mt-7 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
+          <div className="pokret-auto-track flex gap-4">
+          {[...categories, ...categories].map((task, index) => {
             const Icon = taskIcon[task.key] || FileText
             return (
               <Link
-                key={task.key}
+                key={`${task.key}-${index}`}
                 href={task.route}
-                className="group flex flex-col items-center gap-3 rounded-xl border border-[var(--editable-border)] bg-[var(--slot4-surface-bg)] px-3 py-6 text-center transition duration-300 hover:-translate-y-1 hover:border-[var(--slot4-accent)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.10)]"
+                className="group flex w-[190px] shrink-0 flex-col items-center gap-3 rounded-[1.35rem] border border-[#dce4f2] bg-white px-4 py-7 text-center shadow-[0_16px_40px_rgba(23,32,51,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[#38bfd3]"
               >
                 <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--slot4-accent-soft)] text-[var(--slot4-accent)] transition group-hover:scale-105">
                   <Icon className="h-6 w-6" />
@@ -226,6 +203,7 @@ export function EditableStoryRail({ primaryRoute }: HomeSectionProps) {
               </Link>
             )
           })}
+          </div>
         </div>
       </div>
     </section>
@@ -274,11 +252,12 @@ export function EditableMagazineSplit({ primaryTask, primaryRoute, posts, timeSe
   const activity = dedupePosts([...posts, ...timeSections.flatMap((section) => section.posts)]).slice(0, 9)
   if (!activity.length) return null
   return (
-    <section className="bg-[var(--slot4-warm)]">
+    <section className="bg-[#26303c] text-white">
       <div className={`py-14 sm:py-16 ${container}`}>
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-[-0.01em] sm:text-4xl">Recent activity</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-[var(--slot4-muted-text)]">
+          <div className="pokret-dot-row justify-center"><span /><span /><span /><span /></div>
+          <h2 className="mt-8 text-3xl font-extrabold tracking-[-0.01em] sm:text-4xl">Thousands of resources in your pocket</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-white/76">
             The latest posts, reviews and finds from across {SITE_CONFIG.name}.
           </p>
         </div>
@@ -288,7 +267,7 @@ export function EditableMagazineSplit({ primaryTask, primaryRoute, posts, timeSe
           ))}
         </div>
         <div className="mt-10 text-center">
-          <Link href={primaryRoute} className="inline-flex items-center gap-2 rounded-lg border border-[var(--editable-border)] bg-[var(--slot4-surface-bg)] px-6 py-3 text-sm font-bold text-[var(--slot4-page-text)] transition hover:border-[var(--slot4-accent)] hover:text-[var(--slot4-accent)]">
+          <Link href={primaryRoute} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white px-6 py-3 text-sm font-bold text-[#172033] transition hover:-translate-y-0.5">
             Show more activity <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
